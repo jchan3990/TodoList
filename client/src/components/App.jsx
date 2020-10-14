@@ -11,8 +11,13 @@ const App = () => {
     let list = [...taskList];
     list.push({
       'task': task,
-      'completed': false,
     });
+    setTaskList(list);
+  }
+
+  const removeTask = (taskId) => {
+    let list = [...taskList];
+    list.splice(taskId, 1);
     setTaskList(list);
   }
 
@@ -20,7 +25,7 @@ const App = () => {
     <div>
       <h1 id="title">Todo List</h1>
       <TaskForm addTask={addTask} />
-      <TaskList taskList={taskList} />
+      <TaskList taskList={taskList} removeTask={removeTask} />
     </div>
   )
 };
